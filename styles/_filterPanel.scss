@@ -1,0 +1,26 @@
+.category-icon {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin: .3rem;
+  transition: all 0.3s ease;
+}
+
+.category-icon.selected {
+  color: #34ab87; /* Active color */
+}
+
+.category-icon.grayed-out {
+  color: #ccc; /* Grayed-out effect when not selected */
+}
+
+.filter-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h3 {
+    justify-self: center;
+    color: #ccc;
+  }
+}

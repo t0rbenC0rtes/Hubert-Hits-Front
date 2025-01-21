@@ -1,0 +1,34 @@
+@import "./_restaurantCard.scss";
+@import "./_pagination.scss";
+@import "./filterPanel.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    font-family: 'Uber Move Text', sans-serif;                                                
+    h1 {
+        place-self: center;
+    }
+    background-color: #fffefe;
+}
+
+.container {
+  margin: 0 60px;
+}
+
+h1 {
+  color: #34ab87;
+}
+
+.results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
