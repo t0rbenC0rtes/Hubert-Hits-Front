@@ -8,7 +8,7 @@ const RestaurantCard = ({ name, cuisine, avgScore, address, borough }) => {
         <strong>Cuisine:</strong> {cuisine}
       </p>
       <p className="restaurant-avgScore">
-        <strong>Average Score:</strong> {avgScore ? avgScore.toFixed(2) : "N/A"}
+        <strong>Average Score:</strong> {avgScore ? avgScore.toFixed(0) : "N/A"}
       </p>
       <p className="restaurant-address">
         <strong>Address:</strong> {address.building}, {address.street},{" "}

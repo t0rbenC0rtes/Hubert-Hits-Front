@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const API = axios.create({
-  baseURL: 'http://localhost:5000', // Replace with backend's deployed URL when ready
+  baseURL: "https://hubert-hits-back.onrender.com", // Updated backend URL
 });
 
 export default API;

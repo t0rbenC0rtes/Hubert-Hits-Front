@@ -64,9 +64,20 @@ const App = () => {
         onPrevPage={handlePrevPage}
       />
       <div className="results" style={{ position: "relative" }}>
-        {restaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant._id} {...restaurant} />
-        ))}
+        {restaurants.length > 0 ? (
+          restaurants.map((restaurant) => (
+            <RestaurantCard
+              key={restaurant._id}
+              name={restaurant.name}
+              cuisine={restaurant.cuisine}
+              avgScore={restaurant.averageRating || 0}
+              address={restaurant.address}
+              borough={restaurant.borough}
+            />
+          ))
+        ) : (
+          <p>No restaurants found.</p>
+        )}
         {loading && <div className="loading-overlay">Loading...</div>}
       </div>
 
