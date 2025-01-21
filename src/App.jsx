@@ -11,11 +11,17 @@ const App = () => {
   const [loading, setLoading] = useState(false); // Loading state
   const [selectedCategories, setSelectedCategories] = useState([]); // Track selected categories
 
-  const fetchRestaurants = async (page = 1, categories = selectedCategories) => {
+  const fetchRestaurants = async (
+    page = 1,
+    categories = selectedCategories
+  ) => {
     setLoading(true);
     try {
-      const categoryQuery = categories.length > 0 ? `category=${categories.join(",")}` : "";
-      const response = await API.get(`/restaurants?page=${page}&limit=20&${categoryQuery}`);
+      const categoryQuery =
+        categories.length > 0 ? `category=${categories.join(",")}` : "";
+      const response = await API.get(
+        `/restaurants?page=${page}&limit=20&${categoryQuery}`
+      );
       setRestaurants(response.data.restaurants);
       setTotalPages(response.data.totalPages || 1);
       setCurrentPage(page);
@@ -57,22 +63,13 @@ const App = () => {
         onNextPage={handleNextPage}
         onPrevPage={handlePrevPage}
       />
-      <div className="results">
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          restaurants.map((restaurant) => (
-            <RestaurantCard
-              key={restaurant._id}
-              name={restaurant.name}
-              cuisine={restaurant.cuisine}
-              avgScore={restaurant.averageRating}
-              address={restaurant.address}
-              borough={restaurant.borough}
-            />
-          ))
-        )}
+      <div className="results" style={{ position: "relative" }}>
+        {restaurants.map((restaurant) => (
+          <RestaurantCard key={restaurant._id} {...restaurant} />
+        ))}
+        {loading && <div className="loading-overlay">Loading...</div>}
       </div>
+
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
