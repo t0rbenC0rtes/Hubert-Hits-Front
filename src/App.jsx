@@ -3,6 +3,7 @@ import API from "./components/api";
 import RestaurantCard from "./components/RestaurantCard";
 import Pagination from "./components/Pagination";
 import FilterPanel from "./components/FilterPanel";
+import SortingPanel from "./components/SortingPanel";
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -10,17 +11,15 @@ const App = () => {
   const [totalPages, setTotalPages] = useState(0); // Total pages from backend
   const [loading, setLoading] = useState(false); // Loading state
   const [selectedCategories, setSelectedCategories] = useState([]); // Track selected categories
+  const [sortOptions, setSortOptions] = useState({ field: "name", order: "asc" });
 
-  const fetchRestaurants = async (
-    page = 1,
-    categories = selectedCategories
-  ) => {
+  const fetchRestaurants = async (page = 1, categories = selectedCategories, sort = sortOptions) => {
     setLoading(true);
     try {
-      const categoryQuery =
-        categories.length > 0 ? `category=${categories.join(",")}` : "";
+      const categoryQuery = categories.length > 0 ? `category=${categories.join(",")}` : "";
+      const sortQuery = `sortBy=${sort.field}&order=${sort.order}`;
       const response = await API.get(
-        `/restaurants?page=${page}&limit=20&${categoryQuery}`
+        `/restaurants?page=${page}&limit=20&${categoryQuery}&${sortQuery}`
       );
       setRestaurants(response.data.restaurants);
       setTotalPages(response.data.totalPages || 1);
@@ -38,7 +37,12 @@ const App = () => {
 
   const handleCategoryChange = (categories) => {
     setSelectedCategories(categories);
-    fetchRestaurants(1, categories); // Reset to page 1 when categories change
+    fetchRestaurants(1, categories, sortOptions); // Reset to page 1 when categories change
+  };
+
+  const handleSortChange = (sort) => {
+    setSortOptions(sort);
+    fetchRestaurants(1, selectedCategories, sort);
   };
 
   const handleNextPage = () => {
@@ -57,6 +61,7 @@ const App = () => {
     <div className="container">
       <h1>Hubert Hits</h1>
       <FilterPanel onCategorySelect={handleCategoryChange} />
+      <SortingPanel onSortChange={handleSortChange} />
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

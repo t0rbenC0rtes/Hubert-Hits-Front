@@ -1,6 +1,7 @@
-@import "./_restaurantCard.scss";
-@import "./_pagination.scss";
-@import "./filterPanel.scss";
+@use "./restaurantCard.scss";
+@use "./pagination.scss";
+@use "./filterPanel.scss";
+@use "./sortingPanel.scss";
 
 * {
   margin: 0;

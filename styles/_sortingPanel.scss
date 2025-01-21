@@ -1,0 +1,15 @@
+.sorting-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-field, .select-order, .apply {
+    margin: 0.3rem;
+    padding: .3rem;
+    border-radius: .5rem;
+}
+
+.apply {
+    cursor: pointer;
+}
