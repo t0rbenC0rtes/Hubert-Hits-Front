@@ -1,31 +1,41 @@
 .restaurant-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px 0;
-    background-color: #fdf2dc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 15rem;
-  
-    .restaurant-name {
-      font-size: 1rem;
-      margin: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      width: 14rem;
-    }
-  
-    .restaurant-cuisine,
-    .restaurant-avgScore,
-    .restaurant-address,
-    .restaurant-borough {
-      margin: 8px 0;
-      font-size: .6rem;
-    }
-  
-    strong {
-      color: #333;
-    }
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  background-color: #34ab87;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 15rem;
+  color: #ffe;
+
+  .restaurant-name {
+    font-size: 1rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 14rem;
   }
-  
+
+  .restaurant-cuisine,
+  .restaurant-avgScore,
+  .restaurant-address,
+  .restaurant-borough {
+    margin: 8px 0;
+    font-size: 0.6rem;
+  }
+
+  strong {
+    color: #ffe;
+  }
+
+  .restaurant-cuisine,
+  .restaurant-avgScore,
+  .restaurant-address,
+  .restaurant-borough,
+  .restaurant-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

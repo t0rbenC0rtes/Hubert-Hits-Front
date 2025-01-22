@@ -4,6 +4,7 @@ import RestaurantCard from "./components/RestaurantCard";
 import Pagination from "./components/Pagination";
 import FilterPanel from "./components/FilterPanel";
 import SortingPanel from "./components/SortingPanel";
+import GoogleMapComponent from "./components/GoogleMap";
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -62,6 +63,7 @@ const App = () => {
       <h1>Hubert Hits</h1>
       <FilterPanel onCategorySelect={handleCategoryChange} />
       <SortingPanel onSortChange={handleSortChange} />
+      <GoogleMapComponent restaurants={restaurants} />
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
